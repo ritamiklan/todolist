@@ -2,12 +2,6 @@ import React from "react";
 import "../App.css";
 
 export default function TodoTable(props) {
-  /* const deleteTodo = (row) => {
-    console.log(row);
-    setTodos(props.todos.filter((todo, index) => index !== row));
-  };
-  */
-
   return (
     <div className="App">
       <table>
