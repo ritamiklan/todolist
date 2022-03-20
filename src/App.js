@@ -16,6 +16,10 @@ function App() {
     setTodo({ ...todo, [event.target.name]: event.target.value });
   };
 
+  const deleteTodo = (row) => {
+    setTodos(todos.filter((todo, index) => index !== row));
+  };
+
   return (
     <div className="App">
       <input
@@ -33,7 +37,7 @@ function App() {
         onChange={inputChanged}
       />
       <button onClick={addTodo}>Add</button>
-      <TodoTable todos={todos} />
+      <TodoTable todos={todos} delete={deleteTodo} />
     </div>
   );
 }
