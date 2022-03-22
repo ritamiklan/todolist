@@ -7,9 +7,9 @@ import "ag-grid-community/dist/styles/ag-theme-material.css";
 
 export default function TodoTable(props) {
   const columns = [
-    { headerName: "Description", field: "description" },
-    { headerName: "Date", field: "date" },
-    { headerName: "Priority", field: "priority" },
+    { headerName: "Description", field: "description", suppressMovable: true },
+    { headerName: "Date", field: "date", suppressMovable: true },
+    { headerName: "Priority", field: "priority", suppressMovable: true },
   ];
 
   return (
