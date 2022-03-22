@@ -3,13 +3,13 @@ import "./App.css";
 import TodoTable from "./components/TodoTable";
 
 function App() {
-  const [todo, setTodo] = useState({ desc: "", date: "" });
+  const [todo, setTodo] = useState({ description: "", date: "", priority: "" });
   const [todos, setTodos] = useState([]);
 
   const addTodo = (event) => {
     event.preventDefault();
     setTodos([...todos, todo]);
-    setTodo({ desc: "", date: "" });
+    setTodo({ description: "", date: "" });
   };
 
   const inputChanged = (event) => {
@@ -25,8 +25,8 @@ function App() {
       <input
         type="text"
         placeholder="Description"
-        name="desc"
-        value={todo.desc}
+        name="description"
+        value={todo.description}
         onChange={inputChanged}
       />
       <input
@@ -34,6 +34,13 @@ function App() {
         placeholder="Date"
         name="date"
         value={todo.date}
+        onChange={inputChanged}
+      />
+      <input
+        type="text"
+        placeholder="Priority"
+        name="priority"
+        value={todo.priority}
         onChange={inputChanged}
       />
       <button onClick={addTodo}>Add</button>
