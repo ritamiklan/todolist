@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import TodoTable from "./components/TodoTable";
 
@@ -6,10 +6,12 @@ function App() {
   const [todo, setTodo] = useState({ description: "", date: "", priority: "" });
   const [todos, setTodos] = useState([]);
 
+  const gridRef = useRef();
+
   const addTodo = (event) => {
     event.preventDefault();
     setTodos([...todos, todo]);
-    setTodo({ description: "", date: "" });
+    setTodo({ description: "", date: "", priority: "" });
   };
 
   const inputChanged = (event) => {
@@ -17,7 +19,12 @@ function App() {
   };
 
   const deleteTodo = (row) => {
-    setTodos(todos.filter((todo, index) => index !== row));
+    setTodos(
+      todos.filter(
+        (todo, index) =>
+          index !== gridRef.current.getSelectedNodes()[0].childIndex
+      )
+    );
   };
 
   return (
@@ -44,7 +51,8 @@ function App() {
         onChange={inputChanged}
       />
       <button onClick={addTodo}>Add</button>
-      <TodoTable todos={todos} delete={deleteTodo} />
+      <button onClick={deleteTodo}>Delete</button>
+      <TodoTable todos={todos} row_ref={gridRef} />
     </div>
   );
 }
