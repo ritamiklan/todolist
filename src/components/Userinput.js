@@ -3,6 +3,8 @@ import "../App.css";
 import TodoTable from "./TodoTable";
 import Menu from "./Menu";
 import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
 
 function Userinput() {
   const [todo, setTodo] = useState({ description: "", date: "", priority: "" });
@@ -53,11 +55,18 @@ function Userinput() {
         value={todo.priority}
         onChange={inputChanged}
       />
-      <Button variant="outlined" size="small" color="success" onClick={addTodo}>
+      <Button
+        variant="outlined"
+        startIcon={<SaveIcon />}
+        size="small"
+        color="success"
+        onClick={addTodo}
+      >
         Add
       </Button>
       <Button
         variant="outlined"
+        startIcon={<DeleteIcon />}
         size="small"
         color="error"
         onClick={deleteTodo}
